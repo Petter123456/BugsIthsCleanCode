@@ -1,0 +1,85 @@
+<html>
+    <script type="text/javascript">
+
+        function Get(){
+            var apiUrl = 'https://localhost:44378/Bugs';
+            fetch(apiUrl).then(response => {
+            return response.json();
+            }).then(data => {
+
+            data.forEach(element => {
+                var node = document.createElement("P");
+                var textnode = document.createTextNode(element.id);
+                node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+            
+            var node = document.createElement("P");
+            var textnode = document.createTextNode(element.description);
+                node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+            
+            var node = document.createElement("P");
+
+            var textnode = document.createTextNode(element.status);
+                node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+            });
+
+
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+
+        
+        function SendInterestToCompanyContact(jobId, companyId) {
+            $.ajax({
+
+                url: "https://localhost:44378/Bugs/Create",
+                dataType: 'json',
+                data: {
+                    jobId: getElementById,
+                    companyId: companyId,
+
+                },
+                type: "POST",
+                success: function (data) {
+                    console.log(data);
+                
+                },
+                error: function (a, b, c) {
+
+                }
+            });
+            }
+    </script>
+
+<div style="background-color: aqua;">
+    <button onclick="Get()">Get All Bugs</button>
+
+    <div id="myList">
+        
+    </div>
+</div>
+
+
+<div style="background-color: rgb(15, 216, 92);">
+
+    <input type="text" placeholder="description" id="CreateDescription"/>
+    <br/>
+    <label for="male">Only check if bug is fixed</label>
+    <input type="checkbox" id="CreateStatus"/> 
+    <br/>
+    <button onclick="Create()">Register New Bug</button>
+
+    <div id="myList">
+        
+    </div>
+</div>
+
+
+
+
+</html>
+
+

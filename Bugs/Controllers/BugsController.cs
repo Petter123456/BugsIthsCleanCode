@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using Bugs.DataAccess;
 using Bugs.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 
 namespace Bugs.Controllers
